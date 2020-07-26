@@ -1,9 +1,15 @@
 import * as amount from '../actions/amount';
-export function reducer(state: number = 1, action: amount.AmountChangeAction): number {
-    switch (action.type) {
-        case amount.AMOUNTCHANGE:
-            return action.payload;
-        default:
-            return state;
-    }
+import { createReducer, on, Action } from '@ngrx/store';
+import { act } from '@ngrx/effects';
+
+export const initialState = 1;
+const amountReducer = createReducer(
+    initialState,
+    on(amount.AmountChangeAction, (state, { amountNumber }) => {
+        return amountNumber;
+    })
+);
+
+export function reducer(state: number, action: Action): number {
+    return amountReducer(state, action);
 }

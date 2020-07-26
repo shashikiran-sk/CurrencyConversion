@@ -1,15 +1,18 @@
-import { Action } from '@ngrx/store';
+import { createAction, props } from '@ngrx/store';
 import { Currency } from '../models/currency';
 
 export const CURRENCIESUPDATE = '[Currency] UpdateAll';
 export const CURRENCIESUPDATED = '[Currency] UpdatedAll';
+export const BASECURRENCYUPDATED = '[Currency] BaseCurrencyChange';
 
-export class CurrenciesUpdateAction implements Action {
-    type = CURRENCIESUPDATE;
-}
+export const CurrenciesUpdateAction = createAction(CURRENCIESUPDATE);
 
-export class CurrenciesUpdatedAction implements Action {
-    type = CURRENCIESUPDATED;
+export const CurrenciesUpdatedAction = createAction(
+    CURRENCIESUPDATED,
+    props<{ payload: Array<Currency> }>()
+);
 
-    constructor(public payload: Array<Currency>) {}
-}
+export const BaseCurrenyUpdatedAction = createAction(
+    BASECURRENCYUPDATED,
+    props<{ baseCurrency: string }>()
+);

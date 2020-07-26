@@ -1,7 +1,7 @@
-import { Action } from '@ngrx/store';
+import { createAction, props } from '@ngrx/store';
 export const AMOUNTCHANGE = '[Amount] Change';
 
-export class AmountChangeAction implements Action {
-    type = AMOUNTCHANGE;
-    constructor(public payload: number) {}
-}
+export const AmountChangeAction = createAction(
+    AMOUNTCHANGE,
+    props<{ amountNumber: number }>()
+);

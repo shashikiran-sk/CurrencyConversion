@@ -6,18 +6,21 @@ import { Action } from '@ngrx/store';
 
 import * as currency from '../actions/currency';
 
-import { Actions, Effect, ofType } from '@ngrx/effects';
+import { Actions, Effect, ofType, createEffect } from '@ngrx/effects';
 import { switchMap, map } from 'rxjs/operators';
 
 @Injectable()
 export class CurrencyEffects {
-    @Effect()
-    update$: Observable<Action> = this.actions$.pipe(
-        ofType(currency.CURRENCIESUPDATE),
-        switchMap(() =>
-            this.currencyService
-                .getRates()
-                .pipe(map((data) => new CurrenciesUpdatedAction(data)))
+    update$: Observable<Action> = createEffect(() =>
+        this.actions$.pipe(
+            ofType(currency.CurrenciesUpdateAction),
+            switchMap(() =>
+                this.currencyService
+                    .getRates()
+                    .pipe(
+                        map((payload) => CurrenciesUpdatedAction({ payload }))
+                    )
+            )
         )
     );
 

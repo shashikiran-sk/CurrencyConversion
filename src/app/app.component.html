@@ -337,12 +337,17 @@
     </svg>
 
   </div>
-  <div class="card-container">
-    <input [ngModel]="amount$ | async" (ngModelChange)="onAmountChange($event)">
-    <p *ngFor="let currency of (currencyRates$ | async)">
-      {{ currency.code + ' ' + currency.value * (amount$ | async) }}
-    </p>
-  </div>
+    <div class="card-container">
+        <input [ngModel]="amount$ | async" (ngModelChange)="onAmountChange($event)" aria-placeholder="Amount">
+        <input [ngModel]="baseCurrency" (ngModelChange)="onBaseCurrencyChange($event)" placeholder="Base Currency">
+    </div>
+    <div class="card-container">
+        <div *ngFor="let currency of (currencyRates$ | async)" class="card">
+            <img src="./assets/images/flags/{{currency.code}}.svg" height="50rem" width="50rem">
+            {{ currency.code + ' ' + currency.value * (amount$ | async) }}
+        </div>
+    </div>
+  
   <!-- Footer -->
   <footer>
       Love Angular?&nbsp;

@@ -10,6 +10,8 @@ import { reducers } from './reducers/index';
 import { EffectsModule } from '@ngrx/effects';
 import { CurrencyEffects } from './effects/currencyEffects';
 import { HttpClientModule } from '@angular/common/http';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment';
 
 @NgModule({
     declarations: [AppComponent],
@@ -20,6 +22,7 @@ import { HttpClientModule } from '@angular/common/http';
         FormsModule,
         StoreModule.forRoot(reducers),
         EffectsModule.forRoot([CurrencyEffects]),
+        StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
     ],
     providers: [],
     bootstrap: [AppComponent],

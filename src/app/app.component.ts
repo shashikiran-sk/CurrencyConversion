@@ -4,7 +4,10 @@ import * as fromRoot from './reducers';
 import { AmountChangeAction } from './actions/amount';
 import { Observable } from 'rxjs';
 import { Currency } from './models/currency';
-import { CurrenciesUpdateAction } from './actions/currency';
+import {
+    CurrenciesUpdateAction,
+    BaseCurrenyUpdatedAction,
+} from './actions/currency';
 
 @Component({
     selector: 'app-root',
@@ -16,6 +19,7 @@ export class AppComponent implements OnInit {
     title = 'currency-conversion';
     public amount$: Observable<number>;
     public currencyRates$: Observable<Currency[]>;
+    public baseCurrency: string;
 
     constructor(public store: Store<fromRoot.State>) {
         this.amount$ = store.select(fromRoot.getAmountState);
@@ -23,13 +27,17 @@ export class AppComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        this.store.dispatch(new CurrenciesUpdateAction());
+        this.store.dispatch(CurrenciesUpdateAction());
     }
 
     onAmountChange(amount: string): void {
         const amountNumber = parseFloat(amount);
         if (!isNaN(amountNumber)) {
-            this.store.dispatch(new AmountChangeAction(amountNumber));
+            this.store.dispatch(AmountChangeAction({ amountNumber }));
         }
+    }
+
+    onBaseCurrencyChange(currency: string): void {
+        this.store.dispatch(BaseCurrenyUpdatedAction({ baseCurrency: currency }));
     }
 }
