@@ -12,6 +12,11 @@ import { select, Store } from '@ngrx/store';
     providedIn: 'root',
 })
 export class CurrencyService {
+    getCountries(): Observable<string[]> {
+        return this.http
+            .get<any>(`https://api.exchangeratesapi.io/latest`)
+            .pipe(map((result) => Object.keys(result.rates)));
+    }
     constructor(private http: HttpClient, private store: Store) {}
 
     getRates(): Observable<Currency[]> {
@@ -25,14 +30,12 @@ export class CurrencyService {
                     )
                     .pipe(
                         map((result) => {
-                            return Object.keys(result.rates).map(
-                                (key) => {
-                                    return {
-                                        code: key,
-                                        value: result.rates[key],
-                                    };
-                                }
-                            );
+                            return Object.keys(result.rates).map((key) => {
+                                return {
+                                    code: key,
+                                    value: result.rates[key],
+                                };
+                            });
                         })
                     )
             )

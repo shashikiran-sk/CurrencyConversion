@@ -12,9 +12,10 @@ import { CurrencyEffects } from './effects/currencyEffects';
 import { HttpClientModule } from '@angular/common/http';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
+import { CurrencyInputComponent } from './components/currency-input/currency-input.component';
 
 @NgModule({
-    declarations: [AppComponent],
+    declarations: [AppComponent, CurrencyInputComponent],
     imports: [
         BrowserModule,
         AppRoutingModule,

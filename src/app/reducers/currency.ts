@@ -1,8 +1,6 @@
 import * as currency from '../actions/currency';
 import { Currency } from '../models/currency';
-import { createReducer, on, Action, ActionReducer } from '@ngrx/store';
-import { act } from '@ngrx/effects';
-import { State } from '.';
+import { createReducer, on, Action } from '@ngrx/store';
 
 const currenciesInitialState = [];
 const baseCurrencyInitialState = 'INR';
@@ -18,12 +16,7 @@ export function reducer(state: any[], action: Action): Array<Currency> {
 
 const baseCurrencyReducer = createReducer(
     baseCurrencyInitialState,
-    on(currency.BaseCurrenyUpdatedAction, (state, { baseCurrency }) => {
-        if (['USD', 'INR', 'EUR'].includes(baseCurrency)) {
-            return baseCurrency;
-        }
-        return state;
-    })
+    on(currency.BaseCurrenyUpdatedAction, (state, { baseCurrency }) => baseCurrency)
 );
 
 export function baseCurencyreducer(state: string, action: Action): string {

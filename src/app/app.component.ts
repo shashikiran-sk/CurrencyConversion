@@ -1,43 +1,36 @@
-import { Component, ChangeDetectionStrategy, OnInit } from '@angular/core';
+import { Component, ChangeDetectionStrategy, OnInit, OnChanges } from '@angular/core';
 import { Store } from '@ngrx/store';
 import * as fromRoot from './reducers';
-import { AmountChangeAction } from './actions/amount';
+import { CurrenciesUpdateAction } from './actions/currency';
 import { Observable } from 'rxjs';
 import { Currency } from './models/currency';
-import {
-    CurrenciesUpdateAction,
-    BaseCurrenyUpdatedAction,
-} from './actions/currency';
+import { CountriesUpdateAction } from './actions/country';
 
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
+    // changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AppComponent implements OnInit {
-    title = 'currency-conversion';
-    public amount$: Observable<number>;
+export class AppComponent implements OnInit, OnChanges {
+    title = 'Convert Currency from Base value to all other Currency values!';
     public currencyRates$: Observable<Currency[]>;
-    public baseCurrency: string;
+    public amount = 0;
 
     constructor(public store: Store<fromRoot.State>) {
-        this.amount$ = store.select(fromRoot.getAmountState);
         this.currencyRates$ = store.select(fromRoot.getCurrencyState);
     }
 
     ngOnInit(): void {
         this.store.dispatch(CurrenciesUpdateAction());
+        this.store.dispatch(CountriesUpdateAction());
     }
 
-    onAmountChange(amount: string): void {
-        const amountNumber = parseFloat(amount);
-        if (!isNaN(amountNumber)) {
-            this.store.dispatch(AmountChangeAction({ amountNumber }));
-        }
+    ngOnChanges(changes: any): void {
+        console.log(changes);
     }
 
-    onBaseCurrencyChange(currency: string): void {
-        this.store.dispatch(BaseCurrenyUpdatedAction({ baseCurrency: currency }));
+    onAmountChange(amountNum: number): void {
+        this.amount = amountNum;
     }
 }

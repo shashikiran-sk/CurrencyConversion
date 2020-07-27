@@ -1,0 +1,4 @@
+<div class="currency-inputs">
+    <input [ngModel]="amount$ | async" (ngModelChange)="onAmountChange($event)" placeholder="Amount">
+    <input [ngModel]="baseCurrency" (ngModelChange)="onBaseCurrencyChange($event)" placeholder="Base Currency">
+</div>
