@@ -8,6 +8,9 @@ const CountryReducerMethod = createReducer(
     on(CountriesUpdatedAction, (state, { countries }) => countries)
 );
 
-export function CountryReducer(state: Array<string>, action: Action): Array<string>{
+export function CountryReducer(
+    state: Array<string>,
+    action: Action
+): Array<string> {
     return CountryReducerMethod(state, action);
 }

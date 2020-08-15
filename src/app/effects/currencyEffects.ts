@@ -8,7 +8,7 @@ import * as currency from '../actions/currency';
 import * as country from '../actions/country';
 
 import { Actions, Effect, ofType, createEffect } from '@ngrx/effects';
-import { switchMap, map } from 'rxjs/operators';
+import { switchMap, map, take } from 'rxjs/operators';
 import { CountriesUpdatedAction } from '../actions/country';
 
 @Injectable()
@@ -22,7 +22,8 @@ export class CurrencyEffects {
                     .pipe(
                         map((payload) => CurrenciesUpdatedAction({ payload }))
                     )
-            )
+            ),
+            take(10)
         )
     );
 

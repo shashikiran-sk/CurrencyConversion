@@ -23,7 +23,10 @@ import { CurrencyInputComponent } from './components/currency-input/currency-inp
         FormsModule,
         StoreModule.forRoot(reducers),
         EffectsModule.forRoot([CurrencyEffects]),
-        StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
+        StoreDevtoolsModule.instrument({
+            maxAge: 25,
+            logOnly: environment.production,
+        }),
     ],
     providers: [],
     bootstrap: [AppComponent],

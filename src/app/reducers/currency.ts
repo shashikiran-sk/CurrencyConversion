@@ -16,7 +16,10 @@ export function reducer(state: any[], action: Action): Array<Currency> {
 
 const baseCurrencyReducer = createReducer(
     baseCurrencyInitialState,
-    on(currency.BaseCurrenyUpdatedAction, (state, { baseCurrency }) => baseCurrency)
+    on(
+        currency.BaseCurrenyUpdatedAction,
+        (state, { baseCurrency }) => baseCurrency
+    )
 );
 
 export function baseCurencyreducer(state: string, action: Action): string {

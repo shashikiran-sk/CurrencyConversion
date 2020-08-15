@@ -7,5 +7,5 @@ export const CountriesUpdateAction = createAction(COUNTRIESUPDATE);
 
 export const CountriesUpdatedAction = createAction(
     COUNTRIESUPDATED,
-    props<{countries: Array<string>}>()
+    props<{ countries: Array<string> }>()
 );
