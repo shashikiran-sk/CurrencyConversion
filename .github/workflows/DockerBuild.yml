@@ -46,4 +46,4 @@ jobs:
         repository: currencyconversion
         # Whether to push the image
         push: true
-        tag: 0.0.2 
+        tags: 0.0.2 
