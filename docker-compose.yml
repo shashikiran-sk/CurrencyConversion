@@ -1,0 +1,11 @@
+version: "3.3"
+services:
+    currency-conversion:
+        container_name: currency-conversion
+        build:
+            context: .
+            dockerfile: Dockerfile
+        image: currencyconversion:0.0.2
+        ports:
+            - 4201:4200
+            - 8080:80
