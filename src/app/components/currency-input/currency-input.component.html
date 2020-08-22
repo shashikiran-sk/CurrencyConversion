@@ -1,4 +1,10 @@
 <div class="currency-inputs">
     <input [ngModel]="amount$ | async" (ngModelChange)="onAmountChange($event)" placeholder="Amount">
-    <input [ngModel]="baseCurrency" (ngModelChange)="onBaseCurrencyChange($event)" placeholder="Base Currency">
+    <div class="btn-group" ngbDropdown role="group">
+        <button class="btn btn-outline-danger" ngbDropdownToggle>{{baseCurrency$ | async}}</button>
+        <div class="dropdown-menu" ngbDropdownMenu>
+            <button *ngFor="let country of countries$ | async" ngbDropdownItem
+                    (click)="onBaseCurrencyChange(country)">{{country}}</button>
+        </div>
+    </div>
 </div>

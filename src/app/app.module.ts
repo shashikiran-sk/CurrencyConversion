@@ -13,6 +13,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { CurrencyInputComponent } from './components/currency-input/currency-input.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
     declarations: [AppComponent, CurrencyInputComponent],
@@ -27,6 +28,7 @@ import { CurrencyInputComponent } from './components/currency-input/currency-inp
             maxAge: 25,
             logOnly: environment.production,
         }),
+        NgbModule,
     ],
     providers: [],
     bootstrap: [AppComponent],

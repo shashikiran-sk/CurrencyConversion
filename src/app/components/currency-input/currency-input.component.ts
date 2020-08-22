@@ -12,15 +12,14 @@ import * as fromRoot from '../../reducers';
 })
 export class CurrencyInputComponent implements OnInit {
     public amount$: Observable<number>;
-    public baseCurrency: string;
-    private countries: Array<string>;
+    public baseCurrency$: Observable<string>;
+    public countries$: Observable<string[]>;
     @Output() amount = new EventEmitter<number>();
 
     constructor(public store: Store<fromRoot.State>) {
         this.amount$ = store.select(fromRoot.getAmountState);
-        store.pipe(select(fromRoot.getCountriesState)).subscribe((list) => {
-            this.countries = list;
-        });
+        this.baseCurrency$ = store.pipe(select(fromRoot.getBaseCurrencyState));
+        this.countries$ = store.pipe(select(fromRoot.getCountriesState));
     }
 
     ngOnInit(): void {
@@ -37,10 +36,8 @@ export class CurrencyInputComponent implements OnInit {
     }
 
     onBaseCurrencyChange(currency: string): void {
-        if (this.countries.includes(currency)) {
-            this.store.dispatch(
-                BaseCurrenyUpdatedAction({ baseCurrency: currency })
-            );
-        }
+        this.store.dispatch(
+            BaseCurrenyUpdatedAction({ baseCurrency: currency })
+        );
     }
 }
