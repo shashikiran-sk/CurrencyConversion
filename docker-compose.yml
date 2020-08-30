@@ -5,7 +5,7 @@ services:
         build:
             context: .
             dockerfile: Dockerfile
-        image: currencyconversion:v0.0.2
+        image: currencyconversion:v1.0.0
         ports:
             - 4201:4200
             - 8080:80

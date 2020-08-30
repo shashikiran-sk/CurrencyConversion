@@ -1,6 +1,6 @@
 {
   "name": "currency-conversion",
-  "version": "0.0.2",
+  "version": "1.0.0",
   "scripts": {
     "version": "echo $(cat package.json | grep version | sed -n '2p' | awk -F: '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]'| sed 's/^/v/')",
     "ng": "ng",
