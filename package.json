@@ -1,7 +1,8 @@
 {
   "name": "currency-conversion",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "scripts": {
+    "version": "echo $(cat package.json | grep version | sed -n '2p' | awk -F: '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]'| sed 's/^/v/')",
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
@@ -16,13 +17,16 @@
     "@angular/compiler": "~10.0.5",
     "@angular/core": "~10.0.5",
     "@angular/forms": "~10.0.5",
+    "@angular/localize": "~10.0.5",
     "@angular/platform-browser": "~10.0.5",
     "@angular/platform-browser-dynamic": "~10.0.5",
     "@angular/router": "~10.0.5",
+    "@ng-bootstrap/ng-bootstrap": "^7.0.0",
     "@ngrx/core": "^1.2.0",
     "@ngrx/effects": "^9.2.0",
     "@ngrx/store": "^9.2.0",
     "@ngrx/store-devtools": "^9.2.0",
+    "bootstrap": "^4.5.0",
     "rxjs": "~6.5.5",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.3"
