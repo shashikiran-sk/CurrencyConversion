@@ -10,7 +10,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { CurrencyEffects } from './effects/currencyEffects';
 import { FormsModule } from '@angular/forms';
 import { CurrencyService } from './services/currency.service';
-import { NgbDropdown, NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
     declarations: [CurrencyConversionComponent, CurrencyInputComponent],
