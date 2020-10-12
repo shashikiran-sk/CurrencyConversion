@@ -5,7 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { HttpClientModule } from '@angular/common/http';
-import { MyLibModule } from 'my-lib';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
@@ -20,7 +19,6 @@ import { HomeModule } from './home/home.module';
         HttpClientModule,
         StoreModule.forRoot({}),
         EffectsModule.forRoot([]),
-        MyLibModule,
         StoreDevtoolsModule.instrument({
             maxAge: 25,
             logOnly: environment.production,
