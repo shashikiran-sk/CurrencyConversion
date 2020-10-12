@@ -1,3 +1,4 @@
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
@@ -9,7 +10,11 @@ const routes: Routes = [
                 (m) => m.CurrencyConversionModule
             ),
     },
-    { path: 'home', loadChildren: () => import('./home/home.module').then(m => m.HomeModule) },
+    {
+        path: 'home',
+        loadChildren: () =>
+            import('./home/home.module').then((m) => m.HomeModule),
+    },
     {
         path: '**',
         redirectTo: 'currency-conversion',
@@ -20,5 +25,11 @@ const routes: Routes = [
 @NgModule({
     imports: [RouterModule.forRoot(routes)],
     exports: [RouterModule],
+    providers: [
+        {
+            provide: LocationStrategy,
+            useClass: HashLocationStrategy,
+        },
+    ],
 })
 export class AppRoutingModule {}
