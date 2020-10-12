@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'lib-my-lib',
+  selector: 'sklib-my-lib',
   template: `
     <p>
       my-lib works!
