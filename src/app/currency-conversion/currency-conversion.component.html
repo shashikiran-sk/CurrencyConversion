@@ -27,7 +27,7 @@
         </svg>
     </div>
     <div class="card-container">
-        <app-currency-input (amount)="onAmountChange($event)"></app-currency-input>
+        <skapp-currency-input (amount)="onAmountChange($event)"></skapp-currency-input>
     </div>
     <div class="card-container">
         <div *ngFor="let currency of currencyRates$ | async" class="card">

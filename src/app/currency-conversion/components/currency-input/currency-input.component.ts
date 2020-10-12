@@ -6,7 +6,7 @@ import { BaseCurrenyUpdatedAction } from '../../actions/currency';
 import * as fromRoot from '../../reducers';
 
 @Component({
-    selector: 'app-currency-input',
+    selector: 'skapp-currency-input',
     templateUrl: './currency-input.component.html',
     styleUrls: ['./currency-input.component.scss'],
 })

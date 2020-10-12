@@ -7,7 +7,7 @@ import { Currency } from './models/currency';
 import { CountriesUpdateAction } from './actions/country';
 
 @Component({
-  selector: 'app-currency-conversion',
+  selector: 'skapp-currency-conversion',
   templateUrl: './currency-conversion.component.html',
   styleUrls: ['./currency-conversion.component.scss']
 })
