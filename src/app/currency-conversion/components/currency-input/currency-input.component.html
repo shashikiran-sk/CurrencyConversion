@@ -1,5 +1,6 @@
 <div class="currency-inputs form-group">
-    <input class="form-control" [ngModel]="amount$ | async" (ngModelChange)="onAmountChange($event)" placeholder="Amount">
+    <input class="form-control" [ngModel]="amount$ | async" (ngModelChange)="onAmountChange($event)"
+           placeholder="Amount">
     <div class="btn-group" ngbDropdown role="group">
         <button class="btn btn-outline-danger" ngbDropdownToggle>{{baseCurrency$ | async}}</button>
         <div class="dropdown-menu" ngbDropdownMenu>

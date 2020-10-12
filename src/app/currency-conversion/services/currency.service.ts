@@ -8,9 +8,7 @@ import { Observable } from 'rxjs';
 import * as fromRoot from '../reducers';
 import { select, Store } from '@ngrx/store';
 
-@Injectable({
-    providedIn: 'root',
-})
+@Injectable()
 export class CurrencyService {
     getCountries(): Observable<string[]> {
         return this.http

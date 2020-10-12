@@ -1,8 +1,8 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Store, select } from '@ngrx/store';
-import { AmountChangeAction } from 'src/app/actions/amount';
-import { BaseCurrenyUpdatedAction } from 'src/app/actions/currency';
+import { AmountChangeAction } from '../../actions/amount';
+import { BaseCurrenyUpdatedAction } from '../../actions/currency';
 import * as fromRoot from '../../reducers';
 
 @Component({
@@ -16,7 +16,7 @@ export class CurrencyInputComponent implements OnInit {
     public countries$: Observable<string[]>;
     @Output() amount = new EventEmitter<number>();
 
-    constructor(public store: Store<fromRoot.State>) {
+    constructor(public store: Store<fromRoot.AppState>) {
         this.amount$ = store.select(fromRoot.getAmountState);
         this.baseCurrency$ = store.pipe(select(fromRoot.getBaseCurrencyState));
         this.countries$ = store.pipe(select(fromRoot.getCountriesState));

@@ -1,34 +1,29 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-import { StoreModule } from '@ngrx/store';
-import { reducers } from './reducers/index';
-import { EffectsModule } from '@ngrx/effects';
-import { CurrencyEffects } from './effects/currencyEffects';
 import { HttpClientModule } from '@angular/common/http';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { environment } from '../environments/environment';
-import { CurrencyInputComponent } from './components/currency-input/currency-input.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { environment } from 'src/environments/environment';
+import { HomeModule } from './home/home.module';
 
 @NgModule({
-    declarations: [AppComponent, CurrencyInputComponent],
+    declarations: [AppComponent],
     imports: [
         BrowserModule,
         AppRoutingModule,
         HttpClientModule,
-        FormsModule,
-        StoreModule.forRoot(reducers),
-        EffectsModule.forRoot([CurrencyEffects]),
+        StoreModule.forRoot({}),
+        EffectsModule.forRoot([]),
         StoreDevtoolsModule.instrument({
             maxAge: 25,
             logOnly: environment.production,
         }),
-        NgbModule,
+        HomeModule
     ],
     providers: [],
     bootstrap: [AppComponent],
