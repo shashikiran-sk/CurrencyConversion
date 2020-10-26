@@ -1,8 +1,14 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import {
+    Component,
+    OnInit,
+    Output,
+    EventEmitter,
+    OnDestroy,
+} from '@angular/core';
 import { Observable } from 'rxjs';
 import { Store, select } from '@ngrx/store';
 import { AmountChangeAction } from '../../actions/amount';
-import { BaseCurrenyUpdatedAction } from '../../actions/currency';
+import { BaseCurrencyUpdateAction, ShowAllCurrenciesUpdateAction, TargetCurrencyUpdateAction } from '../../actions/currency';
 import * as fromRoot from '../../reducers';
 
 @Component({
@@ -10,16 +16,20 @@ import * as fromRoot from '../../reducers';
     templateUrl: './currency-input.component.html',
     styleUrls: ['./currency-input.component.scss'],
 })
-export class CurrencyInputComponent implements OnInit {
+export class CurrencyInputComponent implements OnInit, OnDestroy {
     public amount$: Observable<number>;
     public baseCurrency$: Observable<string>;
+    public targetCurrency$: Observable<string>;
     public countries$: Observable<string[]>;
+    public showAllCurrencies$: Observable<boolean>;
     @Output() amount = new EventEmitter<number>();
 
     constructor(public store: Store<fromRoot.AppState>) {
         this.amount$ = store.select(fromRoot.getAmountState);
         this.baseCurrency$ = store.pipe(select(fromRoot.getBaseCurrencyState));
         this.countries$ = store.pipe(select(fromRoot.getCountriesState));
+        this.showAllCurrencies$ = store.pipe(select(fromRoot.getShowAllCurrenciesState));
+        this.targetCurrency$ = store.pipe(select(fromRoot.getTargetCurrencyState));
     }
 
     ngOnInit(): void {
@@ -37,7 +47,19 @@ export class CurrencyInputComponent implements OnInit {
 
     onBaseCurrencyChange(currency: string): void {
         this.store.dispatch(
-            BaseCurrenyUpdatedAction({ baseCurrency: currency })
+            BaseCurrencyUpdateAction({ baseCurrency: currency })
         );
     }
+
+    onShowAllCurrenciesChange(showAllCurrencies: boolean): void {
+        this.store.dispatch(ShowAllCurrenciesUpdateAction({ showAllCurrencies }));
+    }
+
+    onTargetCurrencyChange(currency: string): void {
+        this.store.dispatch(
+            TargetCurrencyUpdateAction({ targetCurrency: currency })
+        );
+    }
+
+    ngOnDestroy(): void {}
 }

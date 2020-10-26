@@ -1,11 +1,27 @@
 <div class="currency-inputs form-group">
-    <input class="form-control" [ngModel]="amount$ | async" (ngModelChange)="onAmountChange($event)"
-           placeholder="Amount">
-    <div class="btn-group" ngbDropdown role="group">
-        <button class="btn btn-outline-danger" ngbDropdownToggle>{{baseCurrency$ | async}}</button>
-        <div class="dropdown-menu" ngbDropdownMenu>
-            <button *ngFor="let country of countries$ | async" ngbDropdownItem
-                    (click)="onBaseCurrencyChange(country)">{{country}}</button>
+    <section class="currency-input">
+        <input class="form-control" [ngModel]="amount$ | async" (ngModelChange)="onAmountChange($event)"
+               placeholder="Amount">
+        <div class="btn-group country-dropdown" ngbDropdown role="group">
+            <button class="btn btn-outline-danger" ngbDropdownToggle>{{baseCurrency$ | async}}</button>
+            <div class="dropdown-menu" ngbDropdownMenu>
+                <button *ngFor="let country of countries$ | async" ngbDropdownItem
+                        (click)="onBaseCurrencyChange(country)">{{country}}</button>
+            </div>
         </div>
-    </div>
+    </section>
+    <section class="result-currency-selection">
+        <label for="show-all-currencies">Show in all currencies</label>
+        <input id="show-all-currencies" class="form-control" type="checkbox" [ngModel]="showAllCurrencies$ | async"
+               (ngModelChange)="onShowAllCurrenciesChange($event)" placeholder="Amount">
+    </section>
+    <section class="currency-output" *ngIf="!(showAllCurrencies$ | async)">
+        <div class="btn-group country-dropdown" ngbDropdown role="group">
+            <button class="btn btn-outline-danger" ngbDropdownToggle>{{targetCurrency$ | async}}</button>
+            <div class="dropdown-menu" ngbDropdownMenu>
+                <button *ngFor="let country of countries$ | async" ngbDropdownItem
+                        (click)="onTargetCurrencyChange(country)">{{country}}</button>
+            </div>
+        </div>
+    </section>
 </div>
