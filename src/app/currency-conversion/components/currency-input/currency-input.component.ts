@@ -26,10 +26,10 @@ export class CurrencyInputComponent implements OnInit, OnDestroy {
 
     constructor(public store: Store<fromRoot.AppState>) {
         this.amount$ = store.select(fromRoot.getAmountState);
-        this.baseCurrency$ = store.pipe(select(fromRoot.getBaseCurrencyState));
-        this.countries$ = store.pipe(select(fromRoot.getCountriesState));
-        this.showAllCurrencies$ = store.pipe(select(fromRoot.getShowAllCurrenciesState));
-        this.targetCurrency$ = store.pipe(select(fromRoot.getTargetCurrencyState));
+        this.baseCurrency$ = store.select(fromRoot.getBaseCurrencyState);
+        this.countries$ = store.select(fromRoot.getCountriesState);
+        this.showAllCurrencies$ = store.select(fromRoot.getShowAllCurrenciesState);
+        this.targetCurrency$ = store.select(fromRoot.getTargetCurrencyState);
     }
 
     ngOnInit(): void {
@@ -61,5 +61,11 @@ export class CurrencyInputComponent implements OnInit, OnDestroy {
         );
     }
 
-    ngOnDestroy(): void {}
+    onSwap(sourceCurrency: string, targetCurrency: string): void {
+        this.store.dispatch(BaseCurrencyUpdateAction({baseCurrency: targetCurrency}));
+        this.store.dispatch(TargetCurrencyUpdateAction({targetCurrency: sourceCurrency}));
+    }
+
+    ngOnDestroy(): void {
+    }
 }

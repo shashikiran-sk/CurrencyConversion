@@ -3,7 +3,7 @@
         <input class="form-control" [ngModel]="amount$ | async" (ngModelChange)="onAmountChange($event)"
                placeholder="Amount">
         <div class="btn-group country-dropdown" ngbDropdown role="group">
-            <button class="btn btn-outline-danger" ngbDropdownToggle>{{baseCurrency$ | async}}</button>
+            <button class="btn btn-outline-danger" ngbDropdownToggle #sourceCurrency>{{baseCurrency$ | async}}</button>
             <div class="dropdown-menu" ngbDropdownMenu>
                 <button *ngFor="let country of countries$ | async" ngbDropdownItem
                         (click)="onBaseCurrencyChange(country)">{{country}}</button>
@@ -16,8 +16,10 @@
                (ngModelChange)="onShowAllCurrenciesChange($event)" placeholder="Amount">
     </section>
     <section class="currency-output" *ngIf="!(showAllCurrencies$ | async)">
+        <button class="btn btn-primary" (click)="onSwap(sourceCurrency.innerText, targetCurrency.innerText)">Swap</button>
+
         <div class="btn-group country-dropdown" ngbDropdown role="group">
-            <button class="btn btn-outline-danger" ngbDropdownToggle>{{targetCurrency$ | async}}</button>
+            <button class="btn btn-outline-danger" ngbDropdownToggle #targetCurrency>{{targetCurrency$ | async}}</button>
             <div class="dropdown-menu" ngbDropdownMenu>
                 <button *ngFor="let country of countries$ | async" ngbDropdownItem
                         (click)="onTargetCurrencyChange(country)">{{country}}</button>

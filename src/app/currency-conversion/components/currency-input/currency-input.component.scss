@@ -13,6 +13,7 @@
 
 #show-all-currencies {
     width: 1.5rem;
+    height: 1.5rem;
 }
 
 .currency-input {
@@ -26,5 +27,9 @@
     & input {
         display: inline-block;
         margin: 0 1rem;
+    }
+    & label {
+        margin-bottom: unset;
+        padding: 10px 0;
     }
 }
