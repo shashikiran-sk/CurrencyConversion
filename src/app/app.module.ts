@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -11,6 +11,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from 'src/environments/environment';
 import { HomeModule } from './home/home.module';
 
+import { CurrencyConversionModule, CurrencyConversionComponent } from 'my-lib'
 @NgModule({
     declarations: [AppComponent],
     imports: [
@@ -23,9 +24,10 @@ import { HomeModule } from './home/home.module';
             maxAge: 25,
             logOnly: environment.production,
         }),
-        HomeModule
+        HomeModule,
+        CurrencyConversionModule
     ],
-    providers: [],
+    schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
     bootstrap: [AppComponent],
 })
 export class AppModule {}
