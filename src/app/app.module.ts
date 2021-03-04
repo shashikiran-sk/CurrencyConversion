@@ -11,7 +11,6 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from 'src/environments/environment';
 import { HomeModule } from './home/home.module';
 
-import { CurrencyConversionModule, CurrencyConversionComponent } from 'my-lib'
 @NgModule({
     declarations: [AppComponent],
     imports: [
@@ -24,8 +23,7 @@ import { CurrencyConversionModule, CurrencyConversionComponent } from 'my-lib'
             maxAge: 25,
             logOnly: environment.production,
         }),
-        HomeModule,
-        CurrencyConversionModule
+        HomeModule
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
     bootstrap: [AppComponent],

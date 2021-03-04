@@ -16,9 +16,9 @@
       "dom"
     ],
     "paths": {
-      "my-lib": [
-        "dist/my-lib/my-lib",
-        "dist/my-lib"
+      "currency-conversion-lib": [
+        "dist/currency-conversion-lib/currency-conversion-lib",
+        "dist/currency-conversion-lib"
       ]
     }
   }

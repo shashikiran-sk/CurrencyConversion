@@ -14,10 +14,10 @@
       "path": "./tsconfig.spec.json"
     },
     {
-      "path": "./projects/my-lib/tsconfig.lib.json"
+      "path": "./projects/currency-conversion-lib/tsconfig.lib.json"
     },
     {
-      "path": "./projects/my-lib/tsconfig.spec.json"
+      "path": "./projects/currency-conversion-lib/tsconfig.spec.json"
     }
 ]
 }

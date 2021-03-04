@@ -6,8 +6,8 @@ const routes: Routes = [
     {
         path: 'currency-conversion',
         loadChildren: () =>
-            import('./currency-conversion/currency-conversion.module').then(
-                (m) => m.CurrencyConversionModule
+            import('./currency-conversion/currency-conversion-app.module').then(
+                (m) => m.CurrencyConversionAppModule
             ),
     },
     {
