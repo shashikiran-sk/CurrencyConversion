@@ -26,7 +26,7 @@
             "assets": [
                 {
                     "glob": "**/*",
-                    "input": "node_modules/currency-conversion/src/assets",
+                    "input": "node_modules/currency-conversion-lib/src/assets",
                     "output": "assets"
                 },
                 "src/favicon.ico",
