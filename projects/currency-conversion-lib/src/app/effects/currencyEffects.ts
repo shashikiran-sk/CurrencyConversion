@@ -23,7 +23,6 @@ export class CurrencyEffects {
                         map((payload) => CurrenciesUpdatedAction({ payload }))
                     )
             ),
-            take(10)
         )
     );
 

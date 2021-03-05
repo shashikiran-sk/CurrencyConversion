@@ -3,6 +3,33 @@
     overflow: auto;
 }
 
+.country-dropdown {
+    height: fit-content;
+}
+
 .form-group {
     display: flex;
+}
+
+#show-all-currencies {
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+.currency-input {
+    display: inherit;
+}
+
+.result-currency-selection {
+    margin: 0 16px;
+    display: inherit;
+
+    & input {
+        display: inline-block;
+        margin: 0 1rem;
+    }
+    & label {
+        margin-bottom: unset;
+        padding: 10px 0;
+    }
 }
