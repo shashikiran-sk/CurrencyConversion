@@ -33,7 +33,7 @@ jobs:
         echo Add other actions to build,
         echo test, and deploy your project.
 
-    #Building docker image
+    #Building docker image and pushing to Docker Hub
     - name: Build and push Docker images
       uses: docker/build-push-action@v1.1.0
       with:

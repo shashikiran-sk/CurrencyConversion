@@ -1,0 +1,17 @@
+{
+  "name": "currency-conversion-lib",
+  "version": "1.0.0",
+  "peerDependencies": {
+    "@angular/common": "^10.0.5",
+    "@angular/core": "^10.0.5",
+    "@angular/forms": "~10.0.5",
+    "@ngrx/core": "^1.2.0",
+    "@ngrx/effects": "^9.2.0",
+    "@ngrx/store": "^9.2.0",
+    "rxjs": "~6.5.5",
+    "@ng-bootstrap/ng-bootstrap": "^7.0.0"
+  },
+  "dependencies": {
+    "tslib": "^2.0.0"
+  }
+}

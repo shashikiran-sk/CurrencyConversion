@@ -20,6 +20,12 @@ RUN npm install
 # add app
 COPY . /app
 
+# Build libraries
+RUN ng build currency-conversion-lib --prod
+
+#Move built library package into node modules folder
+RUN mv dist/currency-conversion-lib node_modules/
+
 # Build app
 RUN ng build --prod
 

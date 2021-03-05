@@ -24,8 +24,13 @@
             "tsConfig": "tsconfig.app.json",
             "aot": true,
             "assets": [
-              "src/favicon.ico",
-              "src/assets"
+                {
+                    "glob": "**/*",
+                    "input": "node_modules/currency-conversion-lib/src/assets",
+                    "output": "assets"
+                },
+                "src/favicon.ico",
+                "src/assets"
             ],
             "styles": [
               "src/styles.scss"
@@ -43,7 +48,6 @@
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
-              "extractCss": true,
               "namedChunks": false,
               "extractLicenses": true,
               "vendorChunk": false,
@@ -120,6 +124,46 @@
             "production": {
               "devServerTarget": "currency-conversion:serve:production"
             }
+          }
+        }
+      }
+    },
+    "currency-conversion-lib": {
+      "projectType": "library",
+      "root": "projects/currency-conversion-lib",
+      "sourceRoot": "projects/currency-conversion-lib/src",
+      "prefix": "sklib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "tsConfig": "projects/currency-conversion-lib/tsconfig.lib.json",
+            "project": "projects/currency-conversion-lib/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/currency-conversion-lib/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/currency-conversion-lib/src/test.ts",
+            "tsConfig": "projects/currency-conversion-lib/tsconfig.spec.json",
+            "karmaConfig": "projects/currency-conversion-lib/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/currency-conversion-lib/tsconfig.lib.json",
+              "projects/currency-conversion-lib/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
           }
         }
       }

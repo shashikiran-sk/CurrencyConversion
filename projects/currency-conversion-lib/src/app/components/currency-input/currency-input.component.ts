@@ -12,7 +12,7 @@ import { BaseCurrencyUpdateAction, ShowAllCurrenciesUpdateAction, TargetCurrency
 import * as fromRoot from '../../reducers';
 
 @Component({
-    selector: 'skapp-currency-input',
+    selector: 'sklib-currency-input',
     templateUrl: './currency-input.component.html',
     styleUrls: ['./currency-input.component.scss'],
 })

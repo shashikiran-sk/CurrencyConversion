@@ -7,9 +7,9 @@ import { Currency } from './models/currency';
 import { CountriesUpdateAction } from './actions/country';
 
 @Component({
-    selector: 'skapp-currency-conversion',
-    templateUrl: './currency-conversion.component.html',
-    styleUrls: ['./currency-conversion.component.scss'],
+  selector: 'sklib-currency-conversion',
+  templateUrl: './currency-conversion.component.html',
+  styleUrls: ['./currency-conversion.component.scss']
 })
 export class CurrencyConversionComponent implements OnInit, OnChanges {
     title = 'Convert Currency from Base value to all other Currency values!';
